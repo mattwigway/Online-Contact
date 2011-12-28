@@ -47,9 +47,16 @@ io.sockets.on('connection', function (socket) {
 	    });
 
 	    // woohoo!
-	    socket.on('contact', function (clue, word) {
-		io.sockets.in(socket.room).emit('receive contact', clue, word);
-		io.sockets.in(socket.room).emit('receive chat', '', user + ' won clue ' + clue + ' with ' + word);
+	    socket.on('contact', function (clue, word, wordmaster) {
+		// wordmaster is a bool that says whether the originating client is wordmaster
+		if (wordmaster) {
+		    io.sockets.in(socket.room).emit('remove clue', clue, word);
+		    io.sockets.in(socket.room).emit('receive chat', user, 'I answered clue ' + clue + ' with ' + word);
+		}
+		else {
+		    io.sockets.in(socket.room).emit('receive contact', clue, word);
+		    io.sockets.in(socket.room).emit('receive chat', user, 'I won clue ' + clue + ' with ' + word);
+		}
 	    });
 
 	    socket.on('send chat', function (chat) {

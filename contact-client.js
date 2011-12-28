@@ -56,12 +56,9 @@ $(document).ready(function () {
     });
 
     socket.on('receive contact', function (clue, word) {
-	// get rid of the clue
-	try {
-	    clues[clue + ':' + word].remove();
-	} 
-	// if the clue was never defined because this is the originating client
-	catch (err) {}
+	// get rid of the clues
+	$('#clues ul li').remove();
+	clues = {};
 
 	// give another letter
 	letters += 1;

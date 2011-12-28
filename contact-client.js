@@ -70,7 +70,14 @@ $(document).ready(function () {
 
     $('#clues form').submit(function (e) {
 	e.preventDefault();
-	socket.emit('send clue', $('#clue').val(), $('#clueword').val());
+
+	// check that the clue actually starts with the correct letters
+	// TODO: doubles, triples, &c. E.g., if the letter is m and one user says 'below-glacial deposit', another
+	// (correctly) answers with 'medial moraine', they should get *two* letters.
+	if ($('#clueword').val().slice(0, $('#word').text().length) == $('#word').text()) 
+	    socket.emit('send clue', $('#clue').val(), $('#clueword').val());
+	else
+	    alert('Invalid word!');
     });
 
     $('#wordmaster').submit(function (e) {

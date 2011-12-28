@@ -65,16 +65,40 @@ $(document).ready(function () {
 	$('#word').text(targetWord.slice(0, letters));
     });
 
+    socket.on('receive win', function () {
+	// flash
+	$.each([0, 1, 2, 3, 4], function (ind, i) {
+	    setTimeout(function () {
+		$('body').css('background', '#f51');
+	    }, i*1000);
+	    setTimeout(function () {
+		$('body').css('background', '#fff');
+	    }, i*1000 + 500);
+	});
+	
+	$('#word').text(targetWord);
+    });
+		       
+
     $('#clues form').submit(function (e) {
 	e.preventDefault();
 
 	// check that the clue actually starts with the correct letters
 	// TODO: doubles, triples, &c. E.g., if the letter is m and one user says 'below-glacial deposit', another
 	// (correctly) answers with 'medial moraine', they should get *two* letters.
-	if ($('#clueword').val().slice(0, $('#word').text().length) == $('#word').text()) 
-	    socket.emit('send clue', $('#clue').val(), $('#clueword').val());
-	else
+	if ($('#clueword').val().slice(0, $('#word').text().length) != $('#word').text()) {
 	    alert('Invalid word!');
+	    return;
+	}
+	    
+	// check if the user won
+	if ($('#clueword').val() == targetWord) {
+	    // the target word is not cached on the server, send it back
+	    socket.emit('send win', targetWord);
+	    return;
+	}
+	
+	socket.emit('send clue', $('#clue').val(), $('#clueword').val());
     });
 
     $('#wordmaster').submit(function (e) {

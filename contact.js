@@ -64,6 +64,11 @@ io.sockets.on('connection', function (socket) {
 		
 		// TODO: take wordmaster from everyone else
 	    });
+
+	    socket.on('send win', function (word) {
+		io.sockets.in(socket.room).emit('receive win');
+		io.sockets.in(socket.room).emit('receive chat', 'GAME OVER', 'The game has been won by ' + user + ' with word ' + word);
+	    });
 	});
     });
 });

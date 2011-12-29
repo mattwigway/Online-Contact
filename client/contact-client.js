@@ -128,7 +128,12 @@ $(document).ready(function () {
 	
 	$('#word').text(targetWord);
     });
-		       
+
+    // someone grabbed wordmaster
+    socket.on('unset wordmaster', function (user) {
+	// TODO: user contains new wordmaster. Should something be done, or is the chat message enough?
+	wordmaster = false;
+    });
 
     $('#clues form').submit(function (e) {
 	e.preventDefault();

@@ -83,7 +83,10 @@ io.sockets.on('connection', function (socket) {
 		io.sockets.in(game).emit('set word', word);
 		io.sockets.in(game).emit('receive chat', user, 'I am now wordmaster. The letter is ' + word[0]);
 		
-		// TODO: take wordmaster from everyone else
+		// don't unset wordmaster on the user that just grabbed it, hence use
+		// socket.broadcast.to not io.sockets.in
+		// future exapnsion: it may eventually be useful to have the user. Currently not used in the client.
+		socket.broadcast.to(game).emit('unset wordmaster', user);
 	    });
 
 	    socket.on('send win', function (word) {

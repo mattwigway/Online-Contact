@@ -4,20 +4,18 @@
  */
 
 var PORT = 7501;
-var IP = 'localhost';
 
-var http = require('http');
+var express = require('express');
+var app = express.createServer();
 
-var app = http.createServer(handler);
+// serve the client files
+app.configure(function () {
+    app.use(express.static(__dirname + '/client'));
+});
 
-app.listen(PORT, IP);
+app.listen(PORT);
+
 var io = require('socket.io').listen(app);
-
-function handler (req, res) {
-    res.writeHead(200);
-    res.end('You are connected to the stream server. Please connect using' +
-	    ' a Contact client.');
-}
 
 // here's the workhorse
 io.sockets.on('connection', function (socket) {

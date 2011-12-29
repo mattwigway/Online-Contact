@@ -74,7 +74,9 @@ connect to. If you type the name of a game that is already in
 progress, you will be connected to that game, otherwise a new game
 will be created by that name and you will be connected to it. You can
 become the wordmaster by typing a word in the 'Become Wordmaster' box
-at the top of the screen.
+at the top of the screen. Anyone can become the wordmaster at any
+time; it is assumed the players are friends and won't grab wordmaster
+unnecessarily.
 
 You can give a clue by typing in a word and the clue for that word,
 respectively, into the two side-by-side boxes.
@@ -92,4 +94,5 @@ npm install
 node contact.js
 ```
 
-Alternately, you can use foreman to deploy (e.g., on [Heroku](http://heroku.com)).
+Alternately, you can use foreman to deploy (e.g., on
+[Heroku](http://heroku.com)).

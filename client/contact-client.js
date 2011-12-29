@@ -101,8 +101,13 @@ $(document).ready(function () {
 
     // remove a clue when the wordmaster guesses it
     socket.on('remove clue', function (clue, word) {
-	clues[clue + ':' + word].remove();
-	clues[clue + ':' + word] = undefined;
+	try {
+	    clues[clue + ':' + word].remove();
+	    clues[clue + ':' + word] = undefined;
+	}
+	catch (err) {
+	    // do nothing, it probably didn't exist
+	}
     });
 
     socket.on('receive contact', function (clue, word) {

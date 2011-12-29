@@ -15,9 +15,7 @@
 */
 
 $(document).ready(function () {
-    var socket = io.connect('http://localhost:7501');
-    
-    // when a connection is established, this flag is enabled
+     // when a connection is established, this flag is enabled
     var active = false;
 
     var targetWord;
@@ -39,6 +37,7 @@ $(document).ready(function () {
     }
 
     // server push
+    var socket = io.connect('/');
     socket.on('connect', function () {
 	socket.emit('add user', username);
     });
@@ -59,7 +58,6 @@ $(document).ready(function () {
     });
 
     socket.on('receive clue', function (clue, word, user) {
-	
 	var htclue = 	    
 	    $('<li>').text(user + ' gives clue ' + clue)
 	    .append($('<form><input type="text" class="answer"/><input type="submit"/></form>')
@@ -68,9 +66,23 @@ $(document).ready(function () {
 			
 			console.log($(this).find('.answer').val(), word);
 
-			if ($(this).find('.answer').val() == word) {
-			    // we send the wordmaster flag along; if the wordmaster solves a clue that clue is deleted.
-			    socket.emit('contact', clue, word, wordmaster);
+			if ($(this).find('.answer').val().toLowerCase() == word.toLowerCase()) {
+			    var sendContact = function () {
+				// we send the wordmaster flag along; if the wordmaster solves a clue that clue is deleted.
+				// if the clue is no longer there, the wordmaster has solved it in the meantime
+				if (clues[clue + ':' + word] != undefined) {
+				    socket.emit('contact', clue, word, wordmaster);
+				}
+			    };
+			    
+			    if (wordmaster) {
+				// the wordmaster can answer a clue without counting backwards from 10
+				sendContact();
+			    }
+			    else {
+				socket.emit('send chat', 'CONTACT! ' + clue + ' --- 10, 9, 8, 7, 6, 5, 4, 3, 2, 1')
+				setTimeout(sendContact, 2500); // it takes me about 2.5s to count backwards from 10
+			    }
 			}
 		    })
 		   );
@@ -81,6 +93,7 @@ $(document).ready(function () {
     });	
 
     socket.on('set word', function (theWord) {
+	// capitalization &c is handled by originating client
 	targetWord = theWord;
 	$('#word').text(targetWord[0]);
 	letters = 1;
@@ -88,7 +101,8 @@ $(document).ready(function () {
 
     // remove a clue when the wordmaster guesses it
     socket.on('remove clue', function (clue, word) {
-	clues[clue + ':' + word].remove(); // no need to garbage collect; clues is cleared on a new letter or game
+	clues[clue + ':' + word].remove();
+	clues[clue + ':' + word] = undefined;
     });
 
     socket.on('receive contact', function (clue, word) {
@@ -122,14 +136,14 @@ $(document).ready(function () {
 	// check that the clue actually starts with the correct letters
 	// TODO: doubles, triples, &c. E.g., if the letter is m and one user says 'below-glacial deposit', another
 	// (correctly) answers with 'medial moraine', they should get *two* letters.
-	if ($('#clueword').val().slice(0, $('#word').text().length) != $('#word').text()) {
+	if ($('#clueword').val().slice(0, $('#word').text().length).toLowerCase() != $('#word').text().toLowerCase()) {
 	    alert('Invalid word!');
 	    // return true to allow the form to be resubmitted
-	    return true;
+	    return;
 	}
 	    
 	// check if the user won
-	if ($('#clueword').val() == targetWord) {
+	if ($('#clueword').val().toLowerCase() == targetWord.toLowerCase()) {
 	    // the target word is not cached on the server, send it back
 	    socket.emit('send win', targetWord);
 	    return;

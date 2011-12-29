@@ -44,7 +44,7 @@ io.sockets.on('connection', function (socket) {
 	// now, make these available
 	socket.on('connect to game', function (game) {
 	    socket.join(game);
-	    socket.emit('connected to game ' + socket.in());
+	    socket.emit('connected to game');
 	    console.log('broadcasting');
 	    
 	    console.log(user);

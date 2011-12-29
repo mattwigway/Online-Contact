@@ -8,15 +8,17 @@
   </head>
   <body>
     <form id="wordmaster">
-      <input type="text" id="wordmaster-word" />
+      <label for="wordmaster-word">Become wordmaster:</label><input type="text" id="wordmaster-word" />
     </form>
     <div id="word"></div>
     <div id="clues">
       <ul></ul>
       <form>
-	<input type="text" id="clueword" width="20" />
-	<input type="text" id="clue" width="180" />
-	<input type="submit" />
+	<table>
+	  <tr><td><label for="clueword">Word</label></td><td><input type="text" id="clueword" size="20" /></td></tr>
+	  <tr><td><label for="clue">Clue</label></td><td><input type="text" id="clue" size="65" /></td></tr>
+	  <tr><td></td><td><input type="submit" /></td></tr>
+	</table>
       </form>
     </div>
     <div id="chat">

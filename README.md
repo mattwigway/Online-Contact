@@ -11,7 +11,7 @@ and the CSS for the interface is nonexistent.
 
 # Rules of Contact
 There is a
-[Wikipedia article](http://en.wikipedia.org/wiki/Contact_(word_game))
+[Wikipedia article](http://en.wikipedia.org/wiki/Contact_(word_game%29)
 about Contact, but the rules listed there are not the ones I learned
 to play by. Since I learned to play from a bunch of folks from Long
 Beach, CA, I'm calling this version "Long Beach Contact."

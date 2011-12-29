@@ -143,7 +143,7 @@ $(document).ready(function () {
 	wordmaster = true;
 
 	// capitalize
-	var word = $('#wordmaster-word').val();
+	var word = $('#wordmaster-word').val().toLowerCase();
 	word = word[0].toUpperCase() + word.slice(1);
 	socket.emit('set word and wordmaster', word); 
     });

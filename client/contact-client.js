@@ -150,6 +150,11 @@ $(document).ready(function () {
 	}
 
 	socket.emit('send clue', $('#clue').val(), $('#clueword').val());
+	
+	// clear the boxes
+	$('#clueword').val('');
+	$('#clue').val('');
+
     });
 
     $('#wordmaster').submit(function (e) {
@@ -159,12 +164,18 @@ $(document).ready(function () {
 	// capitalize
 	var word = $('#wordmaster-word').val().toLowerCase();
 	word = word[0].toUpperCase() + word.slice(1);
+
+	// clear input
+	$('#wordmaster-word').val('');
+
 	socket.emit('set word and wordmaster', word); 
     });
 
     $('#chatin').submit(function (e) {
 	e.preventDefault();
-	socket.emit('send chat', $('#chatin input').val());
+	// clear
+	socket.emit('send chat', $('#sendchat').val());
+	$('#sendchat').val('');
     });
 });
 			  

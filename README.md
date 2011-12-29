@@ -87,6 +87,9 @@ respectively, into the two side-by-side boxes.
 You can use the chat-room feature of the site by typing into the
 bottom box.
 
+There is a [hosted version](http://smooth-dawn-8879.heroku.com) or you
+can play locally (see below).
+
 # Running it Locally
 There are a few ways, simplest:
 ```shell

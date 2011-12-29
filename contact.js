@@ -3,7 +3,7 @@
    @author mattwigway
  */
 
-var PORT = 7501;
+var PORT = process.env.PORT || 7501;
 
 var express = require('express');
 var app = express.createServer();

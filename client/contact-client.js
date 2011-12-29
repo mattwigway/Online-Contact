@@ -124,7 +124,8 @@ $(document).ready(function () {
 	// (correctly) answers with 'medial moraine', they should get *two* letters.
 	if ($('#clueword').val().slice(0, $('#word').text().length) != $('#word').text()) {
 	    alert('Invalid word!');
-	    return;
+	    // return true to allow the form to be resubmitted
+	    return true;
 	}
 	    
 	// check if the user won

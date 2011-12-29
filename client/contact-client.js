@@ -141,7 +141,10 @@ $(document).ready(function () {
 	e.preventDefault();
 	wordmaster = true;
 
-	socket.emit('set word and wordmaster', $('#wordmaster-word').val());
+	// capitalize
+	var word = $('#wordmaster-word').val();
+	word = word[0].toUpperCase() + word.slice(1);
+	socket.emit('set word and wordmaster', word); 
     });
 
     $('#chatin').submit(function (e) {

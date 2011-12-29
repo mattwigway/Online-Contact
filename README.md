@@ -20,10 +20,12 @@ The game requires at least 3 players. There is no hard upper limit,
 but once you top about 15 it starts becoming unmanageable. One player
 is the wordmaster, while the others are active players. The wordmaster
 chooses a word (ideally a long, rare one, but not so rare the players
-will *never* be able to guess it). She does not tell the other players
-what word she is thinking of, but she does divulge the first
-letter. In the online version, a user becomes wordmaster by entering
-their word in the top box on the page and pressing enter.
+will *never* be able to guess it). Proper nouns are not allowed.
+
+She does not tell the other players what word she is thinking of, but
+she does divulge the first letter. In the online version, a user
+becomes wordmaster by entering their word in the top box on the page
+and pressing enter.
 
 Each player then tries to think up clues for a word that begins with
 the letters they have so far (more on that later; at the beginning the
@@ -34,7 +36,7 @@ player says 'Contact!,' the two players count down together from 10
 the players generally try to count as quickly as they possibly can)
 and call out the word. If they both say the same word, the wordmaster
 must divulge the next letter of her original word (which the players
-are trying to guess).
+are trying to guess). Proper nouns are permitted as clue words.
 
 If the wordmaster solves a clue at any time before the two players
 call it out (either before they contact or during the 10-count), that

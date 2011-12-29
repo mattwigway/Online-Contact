@@ -77,12 +77,15 @@ at the top of the screen. Anyone can become the wordmaster at any
 time; it is assumed the players are friends and won't grab wordmaster
 unnecessarily.
 
+You only see what happens in a game *after* you join it; things that
+have already happened you will not see. Thus, you should not start
+playing until all the expected players are present.
+
 You can give a clue by typing in a word and the clue for that word,
 respectively, into the two side-by-side boxes.
 
 You can use the chat-room feature of the site by typing into the
 bottom box.
-
 
 # Running it Locally
 There are a few ways, simplest:

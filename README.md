@@ -9,12 +9,11 @@ director to send signals between clients.
 This project is in its very early phases; the code needs some cleanup
 and the CSS for the interface is nonexistent.
 
-# Rules of Contact
-There is a
+# Rules of Contact There is a
 [Wikipedia article](http://en.wikipedia.org/wiki/Contact_(word_game%29)
-about Contact, but the rules listed there are not the ones I learned
-to play by. Since I learned to play from a bunch of folks from Long
-Beach, CA, I'm calling this version "Long Beach Contact."
+about Contact, with a lot of listed variations of the game. Since I
+learned to play from a bunch of folks from Long Beach, CA, I'm calling
+this version "Long Beach Contact."
 
 The game requires at least 3 players. There is no hard upper limit,
 but once you top about 15 it starts becoming unmanageable. One player

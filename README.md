@@ -83,3 +83,13 @@ You can use the chat-room feature of the site by typing into the
 bottom box.
 
 
+# Running it Locally
+There are a few ways, simplest:
+```shell
+git clone git://github.com/mattwigway/online-contact.git
+cd online-contact
+npm install
+node contact.js
+```
+
+Alternately, you can use foreman to deploy (e.g., on [Heroku](http://heroku.com)).

@@ -32,6 +32,7 @@ app.listen(PORT);
 
 var io = require('socket.io').listen(app);
 
+
 // here's the workhorse
 io.sockets.on('connection', function (socket) {
     console.log('new connection');
@@ -43,12 +44,12 @@ io.sockets.on('connection', function (socket) {
 	// now, make these available
 	socket.on('connect to game', function (game) {
 	    socket.join(game);
-	    socket.emit('connected to game');
+	    socket.emit('connected to game ' + socket.in());
 	    console.log('broadcasting');
 	    
 	    console.log(user);
 	    // it's a chat message that will look like INFO: mattwigway has joined the game
-	    io.sockets.in(socket.room).emit('receive chat', 'INFO', user + ' has joined the game');
+	    io.sockets.in(game).emit('receive chat', 'INFO', user + ' has joined the game');
 	    
 	    // TODO: how to send user list?
 	    
@@ -63,31 +64,31 @@ io.sockets.on('connection', function (socket) {
 	    socket.on('contact', function (clue, word, wordmaster) {
 		// wordmaster is a bool that says whether the originating client is wordmaster
 		if (wordmaster) {
-		    io.sockets.in(socket.room).emit('remove clue', clue, word);
-		    io.sockets.in(socket.room).emit('receive chat', user, 'I answered clue ' + clue + ' with ' + word);
+		    io.sockets.in(game).emit('remove clue', clue, word);
+		    io.sockets.in(game).emit('receive chat', user, 'I answered clue ' + clue + ' with ' + word);
 		}
 		else {
-		    io.sockets.in(socket.room).emit('receive contact', clue, word);
-		    io.sockets.in(socket.room).emit('receive chat', user, 'I won clue ' + clue + ' with ' + word);
+		    io.sockets.in(game).emit('receive contact', clue, word);
+		    io.sockets.in(game).emit('receive chat', user, 'I won clue ' + clue + ' with ' + word);
 		}
 	    });
 
 	    socket.on('send chat', function (chat) {
-		io.sockets.in(socket.room).emit('receive chat', user, chat);
+		io.sockets.in(game).emit('receive chat', user, chat);
 	    });
 
 	    // TODO: some sort of security so that not just anyone can grab wordmaster?
 	    socket.on('set word and wordmaster', function (word) {
 		// each browser caches the whole thing
-		io.sockets.in(socket.room).emit('set word', word);
-		io.sockets.in(socket.room).emit('receive chat', user, 'I am now wordmaster. The letter is ' + word[0]);
+		io.sockets.in(game).emit('set word', word);
+		io.sockets.in(game).emit('receive chat', user, 'I am now wordmaster. The letter is ' + word[0]);
 		
 		// TODO: take wordmaster from everyone else
 	    });
 
 	    socket.on('send win', function (word) {
-		io.sockets.in(socket.room).emit('receive win');
-		io.sockets.in(socket.room).emit('receive chat', 'GAME OVER', 'The game has been won by ' + user + ' with word ' + word);
+		io.sockets.in(game).emit('receive win');
+		io.sockets.in(game).emit('receive chat', 'GAME OVER', 'The game has been won by ' + user + ' with word ' + word);
 	    });
 	});
     });

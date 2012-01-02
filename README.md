@@ -1,4 +1,5 @@
 # Online Contact
+
 This is an implementation of the addictive word game Contact! (rules
 below) to allow users to play games long-distance across the
 Internet. It uses [node.js](http://nodejs.com) and
@@ -6,11 +7,9 @@ Internet. It uses [node.js](http://nodejs.com) and
 clients. The server does very little other than to act as a traffic
 director to send signals between clients.
 
-This project is in its very early phases; the code needs some cleanup
-and the CSS for the interface is nonexistent.
+# Rules of Contact 
 
-# Rules of Contact There is a
-[Wikipedia article](http://en.wikipedia.org/wiki/Contact_(word_game%29)
+There is a [Wikipedia article](http://en.wikipedia.org/wiki/Contact_(word_game%29)
 about Contact, with a lot of listed variations of the game. Since I
 learned to play from a bunch of folks from Long Beach, CA, I'm calling
 this version "Long Beach Contact."
@@ -63,6 +62,7 @@ will give a clue at her own discretion. If someone solves that clue,
 the next letter will be given.
 
 # Playing Online
+
 The one thing to remember while playing online is that things *must*
 be exact; antidisestablishmentarianistic is *not* the same word as
 antidisestablishmentarianism. The tool is not case sensitive.
@@ -87,10 +87,11 @@ respectively, into the two side-by-side boxes.
 You can use the chat-room feature of the site by typing into the
 bottom box.
 
-There is a [hosted version](http://smooth-dawn-8879.heroku.com) or you
+There is a [hosted version](http://onlinecontact.heroku.com) or you
 can play locally (see below).
 
 # Running it Locally
+
 There are a few ways, simplest:
 ```shell
 git clone git://github.com/mattwigway/online-contact.git

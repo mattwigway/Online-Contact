@@ -42,8 +42,8 @@ clue is invalidated.
 
 For instance, if the wordmaster thought of the word 'noctilucent,' she
 would divulge to the players the first letter n. Then, player 1 might
-think of the word 'nupitals' and say 'Wedding.' If player 2 figured
-this out and said 'contact 10...1 nupitals!,' the wordmaster must
+think of the word 'nuptials' and say 'Wedding.' If player 2 figured
+this out and said 'contact 10...1 nuptials!,' the wordmaster must
 divulge the next letter (o). Now, all clue words must start with 'no,'
 and so on.
 
@@ -53,9 +53,8 @@ many cases the wordmaster gives the word away when a clue is mentioned
 that clearly refers to the word. This is the way the web contact
 works. If the word never comes up, the game ends in a draw; the
 wordmaster can never win. (I've only ever seen this once, with the
-word sawzall
-[which could be considered a proper noun; nothing else starts with 'sawz']. We
-once came very close with yggsdrasil).
+word sawzall [nothing else starts with 'sawz' that I know of]. We once
+came dangerously close with yggsdrasil).
 
 Every so often, when things begin to look like a draw, the wordmaster
 will give a clue at her own discretion. If someone solves that clue,

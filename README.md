@@ -79,10 +79,13 @@ unnecessarily.
 
 You only see what happens in a game *after* you join it; things that
 have already happened you will not see. Thus, you should not start
-playing until all the expected players are present.
+playing until all the expected players are present. Since any players
+who are added to the game after it starts will not be able to see the
+word, it will be quite impossible to join a game already in progress.
 
 You can give a clue by typing in a word and the clue for that word,
-respectively, into the two side-by-side boxes.
+respectively, into the two boxes. You can answer a clue by typing in
+the answer below the question that appears.
 
 You can use the chat-room feature of the site by typing into the
 bottom box.
